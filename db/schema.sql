@@ -3,10 +3,14 @@ CREATE DATABASE employeetracker_db;
 
 USE employeetracker_db;
 
+-- creates the employee names table
+
 CREATE TABLE employee (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  employee_name VARCHAR(100) NOT NULL
 );
+
+-- creates the departments table
 
 CREATE TABLE departments (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -16,6 +20,8 @@ CREATE TABLE departments (
     REFERENCES employee(id)
     ON DELETE SET NULL
 );
+
+-- creates the salary table
 
 CREATE TABLE salary (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
