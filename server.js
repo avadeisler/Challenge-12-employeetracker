@@ -39,6 +39,28 @@ app.post('/api/new-department', ({ body }, res) => {
   });
 });
 
+// Delete an employee
+app.delete('/api/department/:id', (req, res) => {
+  const sql = `DELETE FROM department WHERE id = ?`;
+  const params = [req.params.id];
+  
+  db.query(sql, params, (err, result) => {
+    if (err) {
+      res.statusMessage(400).json({ error: res.message });
+    } else if (!result.affectedRows) {
+      res.json({
+      message: 'department not found'
+      });
+    } else {
+      res.json({
+        message: 'deleted',
+        changes: result.affectedRows,
+        id: req.params.id
+      });
+    }
+  });
+});
+
 // Read all department
 app.get('/api/department', (req, res) => {
   const sql = `SELECT id, department_name AS name FROM department`;
