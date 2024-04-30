@@ -1,7 +1,7 @@
--- need to figure out how to address the 3rd element of salary
+-- need to figure out how to address the 3rd element
 
-SELECT employee.employee_name AS employee, departments. departments
+SELECT department.department_name AS department, role.role
 FROM departments
-LEFT JOIN employee
-ON departments.employee_id = employee.id
-ORDER BY employee.employee_name;
+LEFT JOIN department
+ON role.department_id = department.id
+ORDER BY department.department_name;

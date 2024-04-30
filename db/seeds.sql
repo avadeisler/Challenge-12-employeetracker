@@ -1,26 +1,26 @@
--- seeds for the employee table
+-- seeds for the department table
 
-INSERT INTO employee (employee_name)
-VALUES ("Felix"),
-       ("Pietro"),
-       ("Holly"),
-       ("Killian"),
-       ("Coraline");
+INSERT INTO department ()
+VALUES ("Shoes"),
+       ("Juniors"),
+       ("Suits"),
+       ("Fine Jewelry"),
+       ("Home");
 
 -- seeds for the departments table
 
-INSERT INTO departments (employee_id, departments)
-VALUES (1, "Shoes"),
-       (2, "Juniors"),
-       (3, "Suits"),
-       (4, "Fine Jewelry"),
-       (5, "Home"),
+INSERT INTO roles ()
+VALUES (1, "Manager"),
+       (2, "Trainer"),
+       (3, "Buyer"),
+       (4, "Salesperson"),
+       (5, "Fufillment"),
 
 -- seeds for the salary table
        
-INSERT INTO salary (employee_id, salary)
-VALUES (1, "25,000"),
-       (2, "25,000"),
-       (3, "30,000"),
-       (4, "40,000"),
-       (5, "30,000"),
+INSERT INTO employee ()
+VALUES (1, "Killian"),
+       (2, "Felix"),
+       (3, "Coraline"),
+       (4, "Holly"),
+       (5, "Pietro"),

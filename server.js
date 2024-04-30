@@ -22,10 +22,10 @@ const db = mysql.createConnection(
 );
 
 // Create an employee
-app.post('/api/new-employee', ({ body }, res) => {
-  const sql = `INSERT INTO employee (employee_name)
+app.post('/api/new-department', ({ body }, res) => {
+  const sql = `INSERT INTO department (department_name)
     VALUES (?)`;
-  const params = [body.employee_name];
+  const params = [body.department_name];
   
   db.query(sql, params, (err, result) => {
     if (err) {
@@ -39,9 +39,9 @@ app.post('/api/new-employee', ({ body }, res) => {
   });
 });
 
-// Read all employees
-app.get('/api/employee', (req, res) => {
-  const sql = `SELECT id, employee_name AS name FROM employee`;
+// Read all department
+app.get('/api/department', (req, res) => {
+  const sql = `SELECT id, department_name AS name FROM department`;
   
   db.query(sql, (err, rows) => {
     if (err) {
@@ -55,31 +55,10 @@ app.get('/api/employee', (req, res) => {
   });
 });
 
-// Delete a employee
-app.delete('/api/employee/:id', (req, res) => {
-  const sql = `DELETE FROM employee WHERE id = ?`;
-  const params = [req.params.id];
-  
-  db.query(sql, params, (err, result) => {
-    if (err) {
-      res.statusMessage(400).json({ error: res.message });
-    } else if (!result.affectedRows) {
-      res.json({
-      message: 'employee not found'
-      });
-    } else {
-      res.json({
-        message: 'deleted',
-        changes: result.affectedRows,
-        id: req.params.id
-      });
-    }
-  });
-});
 
-// Read list of all departments and associated employee name using LEFT JOIN
-app.get('/api/employee-departments', (req, res) => {
-  const sql = `SELECT employee.employee_name AS employee, departments.departments FROM departments LEFT JOIN employee ON departments.employee_id = employee.id ORDER BY employee.employee_name;`;
+// Read list of all roles and associated employee name using LEFT JOIN
+app.get('/api/department-role', (req, res) => {
+  const sql = `SELECT department.department_name AS department, role.role FROM role LEFT JOIN department ON role.department_id = department.id ORDER BY department.department_name;`;
   db.query(sql, (err, rows) => {
     if (err) {
       res.status(500).json({ error: err.message });

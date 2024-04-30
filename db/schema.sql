@@ -3,31 +3,28 @@ CREATE DATABASE employeetracker_db;
 
 USE employeetracker_db;
 
--- creates the employee names table
+-- creates the departments names table
 
-CREATE TABLE employee (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
- employee_name VARCHAR(100) NOT NULL
+CREATE TABLE department (
+  id PRIMARY KEY,
+ department_name VARCHAR(30)
 );
 
--- creates the departments table
+-- creates the roles table
 
-CREATE TABLE departments (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    employee_id INT,
-    departments TEXT NOT NULL,
-    FOREIGN KEY (employee_id)
-    REFERENCES employee(id)
-    ON DELETE SET NULL
+CREATE TABLE role (
+    id PRIMARY KEY,
+    title VARCHAR(30),
+    salary DECIMAL,
+    department_id INT 
 );
 
 -- creates the salary table
 
-CREATE TABLE salary (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    employee_id INT,
-    salary TEXT NOT NULL,
-    FOREIGN KEY (employee_id)
-    REFERENCES employee(id)
-    ON DELETE SET NULL
+CREATE TABLE employee (
+    id INT PRIMARY KEY,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    role_id INT,
+    manager_id INT
 );
